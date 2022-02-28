@@ -1,7 +1,7 @@
 import React                                            from "react";
 import './App.scss';
 import MenuComponent                                    from "./component/Menu";
-import {BrowserRouter as Router, Routes, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import ButtonComponent                                  from "./component/ButtonComponent";
 import TableComponent                                   from "./component/TableComponent";
 import StyleComponent                                   from "./component/StyleComponent";
@@ -9,6 +9,7 @@ import ToogleComponent                                  from "./component/Toogle
 import FormValidation                                   from "./component/FormValidation";
 import FormComponent                                    from "./component/FormComponent";
 import UseEffectComponent                               from "./component/UseEffectComponent";
+import TodoComponent                                    from "./component/TodoComponent";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                     <Route exact path='/form' element={<FormComponent/>}/>
                     <Route exact path='/formValidation' element={<FormValidation/>}/>
                     <Route exact path='/useEffect' element={<UseEffectComponent/>}/>
+                    <Route exact path='/todo' element={<TodoComponent/>}/>
                 </Routes>
             </Router>
         </div>

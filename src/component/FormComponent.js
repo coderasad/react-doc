@@ -15,7 +15,6 @@ const FormComponent = () => {
         setEmail(e.target.email.value)
         setPassword(e.target.password.value)
         if(e.target.name.value && e.target.password.value && e.target.email.value !== ''){
-            console.log('submit');
             e.target.name.value = ''
             e.target.password.value  = ''
             e.target.email.value  = ''

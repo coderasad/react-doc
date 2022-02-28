@@ -10,13 +10,14 @@ const MenuComponent = () => {
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
 
-                    <NavLink activeStyle={{color: "red"}} className={`nav-link rounded`} to="button"> Button </NavLink>
-                    <NavLink  className={`nav-link rounded`} to="table"> Table </NavLink>
-                    <NavLink  className={`nav-link rounded`} to="style"> Style </NavLink>
-                    <NavLink  className={`nav-link rounded`} to="toggle"> Toggle </NavLink>
-                    <NavLink  className={`nav-link rounded`} to="form"> Form </NavLink>
-                    <NavLink  className={`nav-link rounded`} to="formValidation"> FormValidation </NavLink>
-                    <NavLink  className={`nav-link rounded`} to="useEffect"> UseEffect </NavLink>
+                    <NavLink className={`nav-link rounded`} to="button"> Button </NavLink>
+                    <NavLink className={`nav-link rounded`} to="table"> Table </NavLink>
+                    <NavLink className={`nav-link rounded`} to="style"> Style </NavLink>
+                    <NavLink className={`nav-link rounded`} to="toggle"> Toggle </NavLink>
+                    <NavLink className={`nav-link rounded`} to="form"> Form </NavLink>
+                    <NavLink className={`nav-link rounded`} to="formValidation"> Form Validation </NavLink>
+                    <NavLink className={`nav-link rounded`} to="useEffect"> Use Effect </NavLink>
+                    <NavLink className={`nav-link rounded`} to="todo"> Todo List </NavLink>
 
                 </Nav>
             </Navbar.Collapse>
