@@ -1,27 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Col, Form, Row, Toast, ToastContainer } from "react-bootstrap";
+import React, {useState, useEffect} from 'react';
+import {Button, Col, Form, Row, Toast, ToastContainer} from "react-bootstrap";
 
-const TodoForm = ({ newTodo }) => {
-    const initialValues = { todo: '' }
-    const [formValues, setFormValues] = useState(initialValues);
+const TodoForm = ({newTodo, editTodo, setEditTodo, editIndex, setEditIndex, updateTodo, todolist}) => {
+    // const [formValues, setFormValues] = useState(editTodo);
     const [formErrors, setFormErrors] = useState([]);
-    const [showError, setShowError] = useState(false);
-    const [show, setShow] = useState(false);
+    const [showError, setShowError]   = useState(false);
+    const [show, setShow]             = useState(false);
+
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormValues({ ...formValues, [name]: value })
+        const {name, value} = e.target;
+        setEditTodo({...editTodo, [name]: value})
+        /*let title = e.target.value;
+         let newO = {...editTodo};
+         newO['todo'] = title;
+         setEditTodo(newO);*/
     }
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (Object.keys(formErrors).length === 0) {
-            setShow(true)
-            setShowError(false)
-            newTodo(formValues)
-            setFormValues(initialValues)
+        if (editIndex === '') {
+            if (Object.keys(formErrors).length === 0) {
+                setShow(true)
+                setShowError(false)
+                newTodo(editTodo);
+                setEditTodo('')
+            } else {
+                setShowError(true)
+            }
         } else {
-            setShowError(true)
+            const updateTodo = todolist[editIndex].todo = editTodo.todo;
+            setEditTodo(updateTodo)
+            setEditIndex('')
         }
+
     }
+
     const validate = (valus) => {
         const errors = {};
         if (!valus.todo) {
@@ -29,9 +41,10 @@ const TodoForm = ({ newTodo }) => {
         }
         return errors;
     }
+
     useEffect(() => {
-        setFormErrors(validate(formValues))
-    }, [formValues]);
+        setFormErrors(validate(editTodo))
+    }, [editTodo]);
 
 
     return (
@@ -50,13 +63,13 @@ const TodoForm = ({ newTodo }) => {
                 </Toast>
             </ToastContainer>
             <form onSubmit={handleSubmit}>
-                <Row className="my-3" >
+                <Row className="my-3">
                     <Col sm={10}>
                         <Form.Group controlId="formBasicTodo">
                             {/*<Form.Label>New Todo</Form.Label>*/}
                             <Form.Control
                                 onChange={handleChange}
-                                value={formValues.todo}
+                                value={editTodo.todo || ''}
                                 name='todo'
                                 type="text"
                                 placeholder="Enter Todo write here"
@@ -69,7 +82,7 @@ const TodoForm = ({ newTodo }) => {
                     </Col>
                     <Col sm={2}>
                         <Button className='w-100' variant="primary" type="submit">
-                            Submit
+                            {editIndex === '' ? 'Submit' : 'Update'}
                         </Button>
                     </Col>
                 </Row>

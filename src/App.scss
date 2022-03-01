@@ -1,7 +1,27 @@
 @import "~bootstrap/scss/bootstrap";
 
 .nav-link.active {
-  color: #fff !important;
-  background: tomato;
+   color      : #fff !important;
+   background : tomato;
 }
 
+.align-items-start{
+   color: #fff
+}
+.align-items-start:nth-child(3n+1){
+   background      : linear-gradient(90deg, rgba(154,149,230,1) 0%, rgba(204,49,214,1) 41%, rgba(0,212,255,1) 100%);
+}
+.align-items-start:nth-child(3n+2){
+   background      : linear-gradient(90deg, rgba(204,49,214,1) 0%, rgba(0,212,255,1) 41%, rgba(154,149,230,1) 100%);
+}
+.align-items-start:nth-child(3n+3){
+   background      : linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(204,49,214,1) 41%, rgba(154,149,230,1) 100%);
+}
+
+.completeClass {
+   text-decoration : line-through;
+
+   .not-allowed {
+      cursor : not-allowed !important;
+   }
+}

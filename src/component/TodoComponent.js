@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from 'react';
+import React, { useState} from 'react';
 import useTitle                     from "./hook/useTitle";
 import {Col, Container, Row} from "react-bootstrap";
 import TodoForm                      from "./todo/TodoForm";
@@ -9,31 +9,32 @@ const TodoComponent = () => {
 
     const demoTodoList = [{todo: 'List'}];
     const [todos,setTodos] = useState(demoTodoList);
+    const [editTodo,setEditTodo] = useState('');
+    const [editIndex,setEditIndex] = useState('');
     const newTodo = (value) =>{
         setTodos([...todos,value])
     }
     const todoIndex = (value) =>{
-        console.log(value)
-        setTodos([...todos,value])
-        console.log(todos,'todos')
+        setTodos(value)
+        setEditTodo(value)
     }
-    
-    
-    const [test,setTest] = useState(todos);
-    const testHandle = () => {
-        setTest([...test,{todo: 'List'}])
-       
+    const editTodoValue = (value) =>{
+       setEditTodo(value)
+
     }
-    useEffect(() => {
-        console.log(todos);      
-    },[testHandle])
+    const handleEditIndex = (value) => {
+        setEditIndex(value)
+    }
+    const updateTodo = (value) => {
+        setEditTodo(value)
+    }
+
     return (
         <Container>
             <Row>
                 <Col md={12}>
-                    <TodoForm newTodo={newTodo} />
-                    <TodoSHow todoIndex={todoIndex} todolist={todos}/>
-                    <p onClick={() => testHandle()}>Click me</p>
+                    <TodoForm newTodo={newTodo} editTodo={editTodo} setEditTodo={setEditTodo} editIndex={editIndex} setEditIndex={setEditIndex} todolist={todos} updateTodo={updateTodo}/>
+                    <TodoSHow todoIndex={todoIndex} todolist={todos} editTodoValue={editTodoValue} handleEditIndex={handleEditIndex}/>
                 </Col>
             </Row>
         </Container>
